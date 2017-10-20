@@ -1,0 +1,14 @@
+//Esempio file jenkins
+node('master') 
+{
+    checkout scm
+    
+    stage('build') 
+    {
+        withMaven(jdk: 'Java 8', maven: 'Default Maven') 
+        {
+            //sh 'mvn clean install'
+            powershell 'mvn clean install -f \'helloworld-example\''
+        }
+    }
+}
